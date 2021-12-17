@@ -4,34 +4,50 @@ function DrawBarchart(sampleId) {
 
     console.log(`DrawBarchart(${sampleId})`);
 
-//     d3.json("samples.json").then(data => {
+//draw bar chart
+    d3.json("samples.json").then(data => {
+   
+//test code
+        // console.log(data);  
 
-//         console.log(date);
+        let samples = data.samples;  
 
-//         let samples = data.samples;
-//         let resultArray = samples.filter(s => s.id === sampleId);
-//         let result = resultArray[0];
 
-//         console.log(result);
+//filter
+        let resultArray = samples.filter(s => s.id === sampleId);
+        let result = resultArray[0];
 
-//         let otu_ids = result_ids;
-//         let otu_labels = result.otu_labels;
-//         let sample_values = result.sample_values;
-//         let yticks = otu_ids.slice(0,10).map(otuId => `OTU ${otuId}`).reverse();
+        //test it: filter statement is working
+                console.log(result);
 
-//         let barData = {
-//             x:sample_values.slice(0,10).reverse(),
-//             y:yticks,
-//             type: "bar",
-//             text: otu_labels.slice(0,10),
-//             orientation: "h"
-//         };
 
-//         let barArray = [barData];
+        let otu_ids = result.otu_ids;  
+        let otu_labels = result.otu_labels;
+        let sample_values = result.sample_values;
 
-//         Plotly.newPlot("bar", barArray);
+        //test it
+
+        // console.log(otu_ids);
+        // console.log(otu_labels);
+        // console.log(sample_values);
+    
+        //draw graph
+
+        let yticks = otu_ids.slice(0,10).map(otuId => `OTU ${otuId}`).reverse();
+
+        let barData = {
+            x: sample_values.slice(0, 10).reverse(),
+            y: yticks,
+            type: "bar",
+            text: otu_labels.slice(0,10),
+            orientation: "h"
+        };
+
+        let barArray = [barData];
+
+        Plotly.newPlot("bar", barArray);
         
-//     });
+    });
 }
 
 function DrawBubblechart (sampleId) {
