@@ -2,7 +2,7 @@ console.log("This is plot.js");
 
 function DrawBarchart(sampleId) {
 
-    console.log(`DrawBarchart(${sampleId})`);
+    // console.log(`DrawBarchart(${sampleId})`);
 
 //draw bar chart
     d3.json("samples.json").then(data => {
@@ -17,8 +17,8 @@ function DrawBarchart(sampleId) {
         let resultArray = samples.filter(s => s.id === sampleId);
         let result = resultArray[0];
 
-        //test it: filter statement is working
-                console.log(result);
+        //test it: filter statement is workings
+                // console.log(result);
 
 
         let otu_ids = result.otu_ids;  
@@ -51,7 +51,7 @@ function DrawBarchart(sampleId) {
         
 
         //Bubble Chart
-        
+
         var LayoutBubble = {
             margin: { t: 0 },
             xaxis: { title: "OTU ID" },
@@ -86,16 +86,55 @@ function ShowMetadata(sampleId) {
     console.log(`ShowMetadata(${sampleId})`);
 }
 
+// create the function to get the necessary data
+function getDemoInfo(id) {
+
+    // Read the json file to get data
+    d3.json("samples.json").then((data)=> {
+
+        // get the metadata info for the demographic panel
+        var metadata = data.metadata;
+
+        console.log(metadata)
+
+      // Filter meta data info by id
+       var result = metadata.filter(meta => meta.id.toString() === id)[0];
+
+      // Select demographic panel 
+       var demographicInfo = d3.select("#sample-metadata");
+        
+     // Empty the demographic info 
+       demographicInfo.html("");
+
+
+       console.log(Object.entries(result));
+
+     // Demographic data  & append the info to the panel
+        Object.entries(result).forEach((key) => {   
+            demographicInfo.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");    
+        });
+    });
+}
+
+//DROP DOWN FOR DEMOGRAPHICS
+
 //call the option change (Coded in html)
 function optionChanged(id) {
     console.log(`optionChanged(${id})`);
 
+    
+
+    
+    
     //display barchart, bubblchart and demographic data
     DrawBarchart(id);
     DrawBubblechart(id);
     ShowMetadata(id);
+    getDemoInfo(id);
 
 }
+
+
 
 function InitDashboard()
 {
@@ -106,7 +145,9 @@ function InitDashboard()
 //use D3 for dropdown instead of html
 
     d3.json("samples.json").then(data => {
-        console.log(data);
+        // console.log(data);
+
+        
 
         let sampleNames = data.names;
 
@@ -115,16 +156,24 @@ function InitDashboard()
                      .text(sampleId)
                      .property("value", sampleId);
 
+                     
+                     
         });
 
+
+        
         let sampleId = sampleNames[0];
 
             DrawBarchart(sampleId);
             DrawBubblechart(sampleId);
             ShowMetadata(sampleId);
+            getDemoInfo(sampleId);
 
+
+            
             });
         
+            
     }
 
 InitDashboard();
