@@ -1,8 +1,8 @@
 console.log("This is plot.js");
 
-// function DrawBarchart(sampleId) {
+function DrawBarchart(sampleId) {
 
-//     console.log(`DrawBarchart(${sampleId})`);
+    console.log(`DrawBarchart(${sampleId})`);
 
 //     d3.json("samples.json").then(data => {
 
@@ -32,25 +32,26 @@ console.log("This is plot.js");
 //         Plotly.newPlot("bar", barArray);
         
 //     });
-// }
+}
 
-// function DrawBubblechart (sampleId) {
-//     console.log(`DrawBubblechart(${sampleId})`);
-// }
+function DrawBubblechart (sampleId) {
+    console.log(`DrawBubblechart(${sampleId})`);
+}
 
-// function ShowMetadata(sampleId) {
-//     console.log(`ShowMetadata(${sampleId})`);
-// }
+function ShowMetadata(sampleId) {
+    console.log(`ShowMetadata(${sampleId})`);
+}
 
 //call the option change (Coded in html)
 function optionChanged(id) {
     console.log(`optionChanged(${id})`);
-}
-//     DrawBarchart(id);
-//     DrawBubblechart(id);
-//     ShowMetadata(id);
 
-// }
+    //display barchart, bubblchart and demographic data
+    DrawBarchart(id);
+    DrawBubblechart(id);
+    ShowMetadata(id);
+
+}
 
 function InitDashboard()
 {
