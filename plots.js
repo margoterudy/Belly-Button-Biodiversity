@@ -31,7 +31,27 @@ function DrawBarchart(sampleId) {
         // console.log(otu_labels);
         // console.log(sample_values);
 
-        //bubble Chart
+    
+    
+        //Barchart
+
+        let yticks = otu_ids.slice(0,10).map(otuId => `OTU ${otuId}`).reverse();
+
+        let barData = {
+            x: sample_values.slice(0, 10).reverse(),
+            y: yticks,
+            type: "bar",
+            text: otu_labels.slice(0,10),
+            orientation: "h"
+        };
+
+        let barArray = [barData];
+
+        Plotly.newPlot("bar", barArray);
+        
+
+        //Bubble Chart
+        
         var LayoutBubble = {
             margin: { t: 0 },
             xaxis: { title: "OTU ID" },
@@ -52,28 +72,11 @@ function DrawBarchart(sampleId) {
           ];
         
           Plotly.newPlot("bubble", DataBubble, LayoutBubble);
-
-
-    
-        //draw barchart
-
-        let yticks = otu_ids.slice(0,10).map(otuId => `OTU ${otuId}`).reverse();
-
-        let barData = {
-            x: sample_values.slice(0, 10).reverse(),
-            y: yticks,
-            type: "bar",
-            text: otu_labels.slice(0,10),
-            orientation: "h"
-        };
-
-        let barArray = [barData];
-
-        Plotly.newPlot("bar", barArray);
-        
     });
     
+    
 }
+
 
 function DrawBubblechart (sampleId) {
     console.log(`DrawBubblechart(${sampleId})`);
