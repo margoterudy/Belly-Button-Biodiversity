@@ -109,7 +109,7 @@ function getDemoInfo(id) {
 
        console.log(Object.entries(result));
 
-     // Demographic data  & append the info to the panel
+     // Demographic data  & append the info to the panel :key value pairing : key1 = value
         Object.entries(result).forEach((key) => {   
             demographicInfo.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");    
         });
