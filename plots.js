@@ -42,9 +42,10 @@ console.log("This is plot.js");
 //     console.log(`ShowMetadata(${sampleId})`);
 // }
 
-// function optionChanged(id) {
-//     console.log(`optionChanged(${id})`);
-
+//call the option change (Coded in html)
+function optionChanged(id) {
+    console.log(`optionChanged(${id})`);
+}
 //     DrawBarchart(id);
 //     DrawBubblechart(id);
 //     ShowMetadata(id);
