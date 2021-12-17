@@ -71,12 +71,16 @@ function InitDashboard()
                      .text(sampleId)
                      .property("value", sampleId);
 
-    //         DrawBarchart(id);
-    //         DrawBubblechart(id);
-    //         ShowMetadata(id);
+        });
+
+        let sampleId = sampleNames[0];
+
+            DrawBarchart(sampleId);
+            DrawBubblechart(sampleId);
+            ShowMetadata(sampleId);
 
             });
-        });
+        
     }
 
 InitDashboard();
